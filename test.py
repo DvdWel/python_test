@@ -9,6 +9,7 @@ opperators = "O?X"
 
 random.seed(a=None, version=2)
 solution = ""
+print(rules)
 for i in range(0,4):
 	randNumber = str(random.randrange(0, 10))
 	unique = False
@@ -52,7 +53,6 @@ while solved == False and attempt != "q":
 					if compared[t] == opperators[p]:
 						process += opperators[p]
 			print(process)
-			print(rules)
 		turn += 1
 	else:
 		if attempt != "q":
