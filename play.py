@@ -1,35 +1,28 @@
 #!/usr/bin/env python3
 import random
 import re
+from Player import Player
+from Game import Game
 
 rules = '''O = Correct position
 ? = In code but wrong position
 X = Not in code'''
 opperators = "O?X"
 
+game = Game()
+player = Player()
+
 random.seed(a=None, version=2)
 solution = ""
 print(rules)
-for i in range(0,4):
-	randNumber = str(random.randrange(0, 10))
-	unique = False
-	while unique == False:
-		counter = 0
-		for x in range(0, len(solution)):
-			if solution[x] == randNumber:
-				randNumber = str(random.randrange(0, 10))
-			else:
-				counter += 1
-			if counter == len(solution):
-				unique = True
-		if len(solution) == 0:
-			unique = True
-	solution += randNumber
+game.makeSolution()
+print(game.getSolution())
 turn = 0
 solved = False
 attempt = ""
 while solved == False and attempt != "q":
-	attempt = input('Enter a 4 digit number:')
+	player.makeGuess()
+	attempt = player.getGuess()
 	if re.search('(?<!\\d)(?!0000)\\d{4}(?!\\d)', attempt) and attempt != "q":
 		if attempt == solution:
 			solved = True
